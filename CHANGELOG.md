@@ -1,3 +1,6 @@
+## Version 1.0.71
+* added Improved Toughness feat
+
 ## Version 1.0.7
 * added config options for crusade fixes
 
