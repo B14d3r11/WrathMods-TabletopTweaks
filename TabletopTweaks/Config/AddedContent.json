@@ -39,6 +39,7 @@
             "Self-Sufficent": true,
             "ShingleRunner": true,
             "StreetSmarts": true
+            "ImprovedToughness": true
         }
     },
     "FighterAdvancedWeaponTraining": {
