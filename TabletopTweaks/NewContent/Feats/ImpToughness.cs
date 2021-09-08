@@ -7,12 +7,12 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Designers.Mechanics.Recommendations;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using Abodell.Config;
-using Abodell.Extensions;
-using Abodell.NewComponents;
-using Abodell.Utilities;
+using TabletopTweaks.Config;
+using TabletopTweaks.Extensions;
+using TabletopTweaks.NewComponents;
+using TabletopTweaks.Utilities;
 
-namespace Abodell.NewContent.Feats {
+namespace TabletopTweaks.NewContent.Feats {
     static class ImpToughness {
         public static void AddImpToughness() {
             var Toughness = Resources.GetBlueprint<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
