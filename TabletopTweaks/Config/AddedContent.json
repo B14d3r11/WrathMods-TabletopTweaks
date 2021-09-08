@@ -34,12 +34,12 @@
         "Enabled": {
             "DervishDance": true,
             "GracefulAthlete": true,
+            "ImprovedToughness": true
             "MagicalAptitude": true,
             "Scholar": true,
             "Self-Sufficent": true,
             "ShingleRunner": true,
             "StreetSmarts": true
-            "ImprovedToughness": true
         }
     },
     "FighterAdvancedWeaponTraining": {
