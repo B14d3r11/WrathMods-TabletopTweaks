@@ -19,7 +19,7 @@ namespace TabletopTweaks.NewContent.Feats {
             var ImpToughness = Helpers.CreateBlueprint<BlueprintFeature>("ImpToughness", (System.Action<BlueprintFeature>)(bp => {
                 bp.SetName("Improved Toughness");
                 bp.SetDescription("You have exceptional physical stamina.");
-                bp.ReapplyOnLevelUp = true;
+                bp.ReapplyOnLevelUp = false;
                 bp.IsClassFeature = true;
 				bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };
 //Actually does shit
