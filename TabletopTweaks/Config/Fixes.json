@@ -268,6 +268,7 @@
             "CraneWing": true,
             "Endurance": true,
             "FencingGrace": true,
+            "ImpToughness": true,
             "IndomitableMount": true,
             "MountedCombat": true,
             "PersistantMetamagic": true,
