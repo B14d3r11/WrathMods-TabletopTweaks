@@ -70,6 +70,7 @@ namespace TabletopTweaks.NewContent {
                 Feats.StreetSmarts.AddStreetSmarts();
                 Feats.GracefulAthlete.AddGracefulAthlete();
                 Feats.DervishDance.AddDervishDance();
+                Feats.ImpToughness.AddImpToughness();
 
                 AlternateCapstones.MasterfulTalent.AddMasterfulTalent();
             }
