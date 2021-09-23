@@ -1,8 +1,61 @@
-## Version 1.0.71
-* added Improved Toughness feat
+## Version 1.2.4
+* fixed issue with broken cantrips with spell combat
+* added mythic spell combat
+
+## Version 1.2.3
+* spell combat now works with spells that have variants
+
+## Version 1.2.2
+* fixed issue where broad study's settings were inverted
+
+## Version 1.2.1
+* disabled selective metamagic on non instantaneous effects
+* added broad study magus arcana
+* eldritch scion can now take bloodline ascendancy 
+
+## Version 1.2.0
+* loremaster spell secrets now work
+* loremaster prerequisites have been updated
+* loremaster no longer allows you to take trickster feats
+* loremaster no longer causes you to lose a caster level
+* fixed bug where trained throw was not granting damage
+
+## Version 1.1.2
+* dragon disciple can now progress with:
+    * stigmitized Witch
+    * sage sorcerer
+    * empyreal sorcerer
+    * unlettered arcansist
+    * nature mage
+
+## Version 1.1.1
+* added spell blending (magus arcana)
+
+## Version 1.1.0
+* added extra reservoir
+* added extra ki
+* added extra hex
+* added extra arcanist exploit
+* added extra arcana
+* added extra rogue talent
+* added extra slayer talent
+* added extra revelation
+* added extra discovery
+* added extra mercy
+
+## Version 1.0.9
+* added focused weapon advanced weapon training
+* eldritch scion can now properly take a second bloodline
+* fixed broken fighter weapon training from 1.0.3
+
+## Version 1.0.8
+* added zen archer perfect strike upgrade
 
 ## Version 1.0.7
 * added config options for crusade fixes
+* added defensive weapon training
+* fixed lich spellbook merging
+* fixed mod not loading due to vital strike changes
 
 ## Version 1.0.6
 * metamagic rods no longer are on by default

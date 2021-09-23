@@ -24,13 +24,12 @@ namespace TabletopTweaks.Bugfixes.Features {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                if (ModSettings.Fixes.Bloodlines.DisableAll) { return; }
                 Main.LogHeader("Patching Bloodlines");
                 PatchBloodlineRestrictions();
             }
         }
         static void PatchBloodlineRestrictions() {
-            if (!ModSettings.Fixes.Bloodlines.Enabled["BloodlineRestrictions"]) { return; }
+            if (ModSettings.Fixes.Bloodlines.IsDisabled("BloodlineRestrictions")) { return; }
             // Bloodline Requisite 
             var BloodlineRequisiteFeature = Resources.GetModBlueprint<BlueprintFeature>("BloodlineRequisiteFeature");
             // Requisite Features
@@ -143,6 +142,7 @@ namespace TabletopTweaks.Bugfixes.Features {
             var SorcererBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("24bef8d1bee12274686f6da6ccbc8914");
             var SeekerBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("7bda7cdb0ccda664c9eb8978cf512dbc");
             var NineTailedHeirBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("7c813fb495d74246918a690ba86f9c86");
+            var EldritchScionBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("94c29f69cdc34594a6a4677441ed7375");
 
             // Fix Names
             BloodOfDragonsSelection.SetName("Dragon Disciple Bloodline");
@@ -152,6 +152,7 @@ namespace TabletopTweaks.Bugfixes.Features {
             SeekerBloodlineSelection.SetName("Seeker Bloodline");
             SageBloodlineProgression.SetName("Sage Bloodline");
             NineTailedHeirBloodlineSelection.SetName("Nine Tailed Heir Bloodline");
+            EldritchScionBloodlineSelection.SetName("Eldritch Scion Bloodline");
             FixRequisiteName(1, AbyssalBloodlineRequisiteFeature);
             FixRequisiteName(1, ArcaneBloodlineRequisiteFeature);
             FixRequisiteName(1, CelestialBloodlineRequisiteFeature);
@@ -289,6 +290,7 @@ namespace TabletopTweaks.Bugfixes.Features {
             }
             void FixDragonDisciple() {
                 var DragonDiscipleClass = Resources.GetBlueprint<BlueprintCharacterClass>("72051275b1dbb2d42ba9118237794f7c");
+                var DragonDiscipleSpellbookSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("8c1ba14c0b6dcdb439c56341385ee474");
                 var noBloodline = Helpers.Create<PrerequisiteNoFeature>(c => {
                     c.Group = Prerequisite.GroupType.Any;
                     c.m_Feature = BloodlineRequisiteFeature.ToReference<BlueprintFeatureReference>();
@@ -298,8 +300,17 @@ namespace TabletopTweaks.Bugfixes.Features {
                     .Where(c => !(c is PrerequisiteNoFeature)) // Remove old Bloodline Feature
                     .Where(c => !(c is PrerequisiteNoArchetype)) // Remove Sorcerer Archetype Restrictions
                     .Append(noBloodline));
-                BloodOfDragonsSelection.GetComponent<NoSelectionIfAlreadyHasFeature>().m_Features = new BlueprintFeatureReference[] { BloodlineRequisiteFeature.ToReference<BlueprintFeatureReference>() };
+                BloodOfDragonsSelection.GetComponent<NoSelectionIfAlreadyHasFeature>()
+                    .m_Features = new BlueprintFeatureReference[] { BloodlineRequisiteFeature.ToReference<BlueprintFeatureReference>() };
+                DragonDiscipleSpellbookSelection.AddFeatures(
+                    Resources.GetModBlueprint<BlueprintFeature>("DragonDiscipleSageSorcerer"),
+                    Resources.GetModBlueprint<BlueprintFeature>("DragonDiscipleEmpyrealSorcerer"),
+                    Resources.GetModBlueprint<BlueprintFeature>("DragonDiscipleUnletteredArcanist"),
+                    Resources.GetModBlueprint<BlueprintFeature>("DragonDiscipleNatureMage"),
+                    Resources.GetModBlueprint<BlueprintFeature>("DragonDiscipleAccursedWitch")
+                );;
                 Main.LogPatch("Patched", BloodOfDragonsSelection);
+                Main.LogPatch("Patched", DragonDiscipleSpellbookSelection);
                 Main.LogPatch("Patched", DragonDiscipleClass);
             }
             void FixDragonheirScion() {

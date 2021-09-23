@@ -26,7 +26,12 @@ namespace TabletopTweaks.NewContent {
                 ArcanistExploits.MetamagicKnowledge.AddMetamagicKnowledge();
                 ArcanistExploits.Familiar.AddFamiliar();
 
+                MagusArcana.SpellBlending.AddSpellBlending();
+                MagusArcana.BroadStudy.AddBroadStudy();
+
                 FighterAdvancedWeaponTrainings.AdvancedWeapontrainingSelection.AddAdvancedWeaponTrainingSelection();
+                FighterAdvancedWeaponTrainings.DefensiveWeaponTraining.AddDefensiveWeaponTraining();
+                FighterAdvancedWeaponTrainings.FocusedWeapon.AddFocusedWeapon();
                 FighterAdvancedWeaponTrainings.TrainedThrow.AddTrainedThrow();
                 FighterAdvancedWeaponTrainings.TrainedGrace.AddTrainedGrace();
 
@@ -42,6 +47,8 @@ namespace TabletopTweaks.NewContent {
                 Features.PrimalistRagePowerSelection.AddPrimalistRagePowerSelection();
                 Features.LongspearChargeBuff.AddLongspearChargeBuff();
                 Features.CavalierMobilityFeature.AddCavalierMobilityFeature();
+                Features.PerfectStrikeZenArcherBuff.AddPerfectStrikeZenArcherBuff();
+                Features.DragonDiscipleSpellbooks.AddDragonDiscipleSpellbooks();
 
                 Bloodlines.BloodlineRequisiteFeature.AddBloodlineRequisiteFeature();
                 Bloodlines.AberrantBloodline.AddBloodragerAberrantBloodline();
@@ -49,6 +56,8 @@ namespace TabletopTweaks.NewContent {
                 Bloodlines.DestinedBloodline.AddBloodragerDestinedBloodline();
                 Bloodlines.DestinedBloodline.AddSorcererDestinedBloodline();
                 Bloodlines.AbyssalBloodline.AddBloodragerAbyssalDemonicBulkEnlargeBuff();
+
+                Classes.Loremaster.AddLoremasterFeatures();
 
                 Archetypes.CauldronWitch.AddCauldrenWitch();
                 Archetypes.ElementalMaster.AddElementalMaster();
@@ -62,15 +71,30 @@ namespace TabletopTweaks.NewContent {
                 MythicAbilities.ArmorMaster.AddArmorMaster();
                 MythicAbilities.ArmoredMight.AddArmoredMight();
                 MythicAbilities.MountedManiac.AddMountedManiac();
+                MythicAbilities.MythicSpellCombat.AddMythicSpellCombat();
 
                 Feats.MagicalAptitude.AddMagicalAptitude();
                 Feats.Scholar.AddScholar();
-                Feats.SelfSufficent.AddSelfSufficent();
+                Feats.SelfSufficient.AddSelfSufficient();
                 Feats.ShingleRunner.AddShingleRunner();
                 Feats.StreetSmarts.AddStreetSmarts();
                 Feats.GracefulAthlete.AddGracefulAthlete();
                 Feats.DervishDance.AddDervishDance();
-                Feats.ImpToughness.AddImpToughness();
+				Feats.ImpToughness.AddImpToughness();
+				Feats.DemonicToughness.AddDemonicToughness();
+
+                Feats.ExtraReservoir.AddExtraReservoir();
+                Feats.ExtraHex.AddExtraHex();
+                Feats.ExtraArcanistExploit.AddExtraArcanistExploit();
+                Feats.ExtraArcana.AddExtraArcana();
+                Feats.ExtraKi.AddExtraKi();
+                Feats.ExtraRogueTalent.AddExtraRogueTalent();
+                Feats.ExtraSlayerTalent.AddExtraSlayerTalent();
+                Feats.ExtraRevelation.AddExtraRevelation();
+                Feats.ExtraDiscovery.AddExtraDiscovery();
+                Feats.ExtraMercy.AddExtraMercy();
+				Feats.ImpToughness.AddImpToughness();
+				Feats.DemonicToughness.AddDemonicToughness();
 
                 AlternateCapstones.MasterfulTalent.AddMasterfulTalent();
             }

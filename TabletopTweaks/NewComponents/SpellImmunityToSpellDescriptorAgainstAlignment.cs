@@ -80,9 +80,9 @@ namespace TabletopTweaks.NewComponents {
                 }
             }
         }
-#pragma warning disable IDE0044 // Add readonly modifier
         public void OnEventDidTrigger(RuleSavingThrow evt) {
         }
+
         public AlignmentComponent Alignment;
         public SpellDescriptorWrapper Descriptor;
         [SerializeField]
@@ -95,6 +95,5 @@ namespace TabletopTweaks.NewComponents {
         [FormerlySerializedAs("FactToCheck")]
 
         private BlueprintUnitFactReference m_FactToCheck = null;
-#pragma warning restore IDE0044 // Add readonly modifier
     }
 }

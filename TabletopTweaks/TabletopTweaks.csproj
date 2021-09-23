@@ -12,6 +12,7 @@
     <AssemblyName>TabletopTweaks</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <LangVersion>9</LangVersion>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
@@ -27,6 +28,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>
+
+0649</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,9 +41,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup>
-    <WrathInstallDir Condition=" '$(WrathInstallDir)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure</WrathInstallDir>
+    <NoWarn>
+
+0649</NoWarn>
   </PropertyGroup>
   <Target Name="RemoveLib" BeforeTargets="Clean" Condition="Exists('$(SolutionDir)lib')">
     <RemoveDir Directories="$(SolutionDir)lib" />
@@ -49,15 +53,15 @@
   </Target>
   <Target Name="Publicise" AfterTargets="CreateLib">
     <ItemGroup>
-      <PubliciseAssemblyCSharp Include="$(WrathInstallDir)\Wrath_Data\Managed\Assembly-CSharp.dll" />
-      <PubliciseUniRx Include="$(WrathInstallDir)\Wrath_Data\Managed\UniRx.dll" />
+      <PubliciseAssemblyCSharp Include="D:\GOG Games\Pathfinder Wrath of the Righteous\Wrath_Data\Managed\Assembly-CSharp.dll" />
+      <PubliciseUniRx Include="D:\GOG Games\Pathfinder Wrath of the Righteous\Wrath_Data\Managed\UniRx.dll" />
     </ItemGroup>
     <Publicise InputAssemblies="@(PubliciseAssemblyCSharp)" OutputPath="$(SolutionDir)lib/" PubliciseCompilerGenerated="true" />
     <Publicise InputAssemblies="@(PubliciseUniRx)" OutputPath="$(SolutionDir)lib/" PubliciseCompilerGenerated="true" />
   </Target>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityModManager\0Harmony.dll</HintPath>
+      <HintPath>D:\GOG Games\Pathfinder Wrath of the Righteous\Wrath_Data\Managed\UnityModManager\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
@@ -65,7 +69,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>D:\GOG Games\Pathfinder Wrath of the Righteous\Wrath_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
@@ -75,11 +79,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Owlcat.Runtime.Core">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\Owlcat.Runtime.Core.dll</HintPath>
+      <HintPath>D:\GOG Games\Pathfinder Wrath of the Righteous\Wrath_Data\Managed\Owlcat.Runtime.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Owlcat.Runtime.UI">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\Owlcat.Runtime.UI.dll</HintPath>
+      <HintPath>D:\GOG Games\Pathfinder Wrath of the Righteous\Wrath_Data\Managed\Owlcat.Runtime.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -95,32 +99,32 @@
     </Reference>
     <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>D:\GOG Games\Pathfinder Wrath of the Righteous\Wrath_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>D:\GOG Games\Pathfinder Wrath of the Righteous\Wrath_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>D:\GOG Games\Pathfinder Wrath of the Righteous\Wrath_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>D:\GOG Games\Pathfinder Wrath of the Righteous\Wrath_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>D:\GOG Games\Pathfinder Wrath of the Righteous\Wrath_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>D:\GOG Games\Pathfinder Wrath of the Righteous\Wrath_Data\Managed\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityModManager">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
+      <HintPath>D:\GOG Games\Pathfinder Wrath of the Righteous\Wrath_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -133,6 +137,8 @@
     <Compile Include="Bugfixes\Classes\Hellknight.cs" />
     <Compile Include="Bugfixes\Classes\Kineticist.cs" />
     <Compile Include="Bugfixes\Classes\Lich.cs" />
+    <Compile Include="Bugfixes\Classes\Loremaster.cs" />
+    <Compile Include="Bugfixes\Classes\Magus.cs" />
     <Compile Include="Bugfixes\Classes\Monk.cs" />
     <Compile Include="Bugfixes\Classes\Paladin.cs" />
     <Compile Include="Bugfixes\Classes\Ranger.cs" />
@@ -140,6 +146,7 @@
     <Compile Include="Bugfixes\Features\Backgrounds.cs" />
     <Compile Include="Bugfixes\Features\BaseAbilities.cs" />
     <Compile Include="Bugfixes\General\ShadowMagicFix.cs" />
+    <Compile Include="Bugfixes\General\SizeModifiers.cs" />
     <Compile Include="Bugfixes\Items\Armor.cs" />
     <Compile Include="Bugfixes\Items\Equipment.cs" />
     <Compile Include="Bugfixes\Items\Weapons.cs" />
@@ -158,25 +165,33 @@
     <Compile Include="Bugfixes\General\TemporaryHitPointDisplayFix.cs" />
     <Compile Include="MechanicsChanges\InherentSkillPoints.cs" />
     <Compile Include="MechanicsChanges\MetamagicDamage.cs" />
+    <Compile Include="MechanicsChanges\SelectiveMetamagic.cs" />
     <Compile Include="NewComponents\AberrantArcanaExtendComponent.cs" />
     <Compile Include="NewComponents\AbilityShowIfCasterCanCastSpells.cs" />
     <Compile Include="NewComponents\ACBonusAgainstSizeDifference.cs" />
     <Compile Include="NewComponents\AddAdditionalRacialFeatures.cs" />
+    <Compile Include="NewComponents\AdditionalSpellSelection.cs" />
     <Compile Include="NewComponents\AddOutgoingWeaponDamageBonus.cs" />
     <Compile Include="NewComponents\ApplyArmorEnchantsToWeapon.cs" />
     <Compile Include="NewComponents\ArmoredMightComponent.cs" />
     <Compile Include="NewComponents\ArmorFeatureUnlock.cs" />
     <Compile Include="NewComponents\AttackStatReplacementEnforced.cs" />
+    <Compile Include="NewComponents\BroadStudyComponent.cs" />
+    <Compile Include="NewComponents\BroadStudyMythicComponent.cs" />
     <Compile Include="NewComponents\BuffExtraEffectsRequirements.cs" />
     <Compile Include="NewComponents\ContextRestoreResourcesFixed.cs" />
     <Compile Include="NewComponents\DamageGraceEnforced.cs" />
+    <Compile Include="NewComponents\DefensiveWeaponTrainingComponent.cs" />
+    <Compile Include="NewComponents\FocusedWeaponComponent.cs" />
     <Compile Include="NewComponents\IgnoreArmorCheckPenalty.cs" />
     <Compile Include="NewComponents\IgnoreArmorMaxDexBonus.cs" />
     <Compile Include="NewComponents\IndomitableMountFixed.cs" />
     <Compile Include="NewComponents\MountedCombatFixed.cs" />
     <Compile Include="NewComponents\NegateArmorCheckSkillPenalty.cs" />
     <Compile Include="NewComponents\OutcomingAdditionalDamageAndHealingModifier.cs" />
+    <Compile Include="NewComponents\PrerequisiteMythicSpellbook.cs" />
     <Compile Include="NewComponents\PrerequisiteStatBonus.cs" />
+    <Compile Include="NewComponents\PrerequisiteStatValues.cs" />
     <Compile Include="NewComponents\QuickStudyComponent.cs" />
     <Compile Include="NewComponents\AddTouchReach.cs" />
     <Compile Include="NewComponents\DestinedArcanaComponent.cs" />
@@ -192,6 +207,7 @@
     <Compile Include="NewComponents\SelectionDefaultFeature.cs" />
     <Compile Include="NewComponents\SurviveDeathWithSave.cs" />
     <Compile Include="NewComponents\TrainedGraceComponent.cs" />
+    <Compile Include="NewComponents\PrerequisiteFeaturesFromListFormatted.cs" />
     <Compile Include="NewContent\AlternateCapstones\MasterfulTalent.cs" />
     <Compile Include="NewContent\ArcanistExploits\Familiar.cs" />
     <Compile Include="NewContent\ArcanistExploits\ItemCrafting.cs" />
@@ -219,6 +235,7 @@
     <Compile Include="NewComponents\SuppressBuffsPersistant.cs" />
     <Compile Include="NewComponents\SuppressBuffsEveryRound.cs" />
     <Compile Include="NewContent\Archetypes\ElementalMaster.cs" />
+    <Compile Include="NewContent\Classes\Loremaster.cs" />
     <Compile Include="NewContent\Archetypes\MetamagicRager.cs" />
     <Compile Include="NewContent\BaseAbilities\OneHandedToggleAbility.cs" />
     <Compile Include="NewContent\Bloodlines\AberrantBloodline.cs" />
@@ -226,7 +243,18 @@
     <Compile Include="NewContent\Bloodlines\DestinedBloodline.cs" />
     <Compile Include="NewContent\ContentAdder.cs" />
     <Compile Include="NewContent\ArcanistExploits\QuickStudy.cs" />
+    <Compile Include="NewContent\Feats\DemonicToughness.cs" />
     <Compile Include="NewContent\Feats\DervishDance.cs" />
+    <Compile Include="NewContent\Feats\ExtraArcana.cs" />
+    <Compile Include="NewContent\Feats\ExtraArcanistExploit.cs" />
+    <Compile Include="NewContent\Feats\ExtraDiscovery.cs" />
+    <Compile Include="NewContent\Feats\ExtraHex.cs" />
+    <Compile Include="NewContent\Feats\ExtraKi.cs" />
+    <Compile Include="NewContent\Feats\ExtraMercy.cs" />
+    <Compile Include="NewContent\Feats\ExtraReservoir.cs" />
+    <Compile Include="NewContent\Feats\ExtraRevelation.cs" />
+    <Compile Include="NewContent\Feats\ExtraRogueTalent.cs" />
+    <Compile Include="NewContent\Feats\ExtraSlayerTalent.cs" />
     <Compile Include="NewContent\Feats\GracefulAthlete.cs" />
     <Compile Include="NewContent\Feats\ImpToughness.cs" />
     <Compile Include="NewContent\Feats\MagicalAptitude.cs" />
@@ -238,7 +266,9 @@
     <Compile Include="NewContent\Bloodlines\BloodlineRequisiteFeature.cs" />
     <Compile Include="NewContent\Features\CavalierMobilityFeature.cs" />
     <Compile Include="NewContent\Features\CavalierMounts.cs" />
+    <Compile Include="NewContent\Features\DragonDiscipleSpellbooks.cs" />
     <Compile Include="NewContent\Features\LongspearChargeBuff.cs" />
+    <Compile Include="NewContent\Features\PerfectStrikeZenArcherBuff.cs" />
     <Compile Include="NewContent\Features\PrimalistRagePowerSelection.cs" />
     <Compile Include="NewContent\FighterAdvancedArmorTrainings\AdvancedArmorTraining.cs" />
     <Compile Include="NewContent\FighterAdvancedArmorTrainings\ArmoredConfidence.cs" />
@@ -247,12 +277,17 @@
     <Compile Include="NewContent\FighterAdvancedArmorTrainings\CriticalDeflection.cs" />
     <Compile Include="NewContent\FighterAdvancedArmorTrainings\SteelHeadbutt.cs" />
     <Compile Include="NewContent\FighterAdvancedWeaponTrainings\AdvancedWeapontrainingSelection.cs" />
+    <Compile Include="NewContent\FighterAdvancedWeaponTrainings\DefensiveWeaponTraining.cs" />
+    <Compile Include="NewContent\FighterAdvancedWeaponTrainings\FocusedWeapon.cs" />
     <Compile Include="NewContent\FighterAdvancedWeaponTrainings\TrainedGrace.cs" />
     <Compile Include="NewContent\FighterAdvancedWeaponTrainings\TrainedThrow.cs" />
+    <Compile Include="NewContent\MagusArcana\BroadStudy.cs" />
+    <Compile Include="NewContent\MagusArcana\SpellBlending.cs" />
     <Compile Include="NewContent\MythicAbilities\ArmoredMight .cs" />
     <Compile Include="NewContent\MythicAbilities\ArmorMaster.cs" />
     <Compile Include="NewContent\MythicAbilities\ImpossibleSpeed.cs" />
     <Compile Include="NewContent\MythicAbilities\MountedManiac.cs" />
+    <Compile Include="NewContent\MythicAbilities\MythicSpellCombat.cs" />
     <Compile Include="NewContent\Races\Elf.cs" />
     <Compile Include="NewContent\Races\Dwarf.cs" />
     <Compile Include="NewContent\Races\Gnome.cs" />
@@ -260,6 +295,8 @@
     <Compile Include="NewContent\Spells\LongArms.cs" />
     <Compile Include="NewContent\Spells\ShadowEnchantment.cs" />
     <Compile Include="NewContent\WeaponEnchantments\NonStackingTempEnchantments.cs" />
+    <Compile Include="NewUnitParts\UnitPartBroadStudy.cs" />
+    <Compile Include="NewUnitParts\UnitPartFocusedWeapon.cs" />
     <Compile Include="NewUnitParts\MeleeTouchReach.cs" />
     <Compile Include="NewUnitParts\OutgoingWeaponDamageBonus.cs" />
     <Compile Include="Resources.cs" />
@@ -346,6 +383,6 @@
     <Error Condition="!Exists('..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>(robocopy "$(TargetDir) " "C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Mods\TabletopTweaks\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
+    <PostBuildEvent>(robocopy "$(TargetDir) " "D:\GOG Games\Pathfinder Wrath of the Righteous\Mods\TabletopTweaks\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
   </PropertyGroup>
 </Project>

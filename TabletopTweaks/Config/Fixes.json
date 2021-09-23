@@ -8,6 +8,7 @@
     "FixBackgroundModifiers": true,
     "FixShadowSpells": true,
     "MetamagicStacking": true,
+    "SelectiveMetamagicNonInstantaneous": true,
     "Aeon": {
         "DisableAll": false,
         "Enabled": {
@@ -27,7 +28,8 @@
     "Lich": {
         "DisableAll": false,
         "Enabled": {
-            "DeathRush": true
+            "DeathRush": true,
+            "SpellbookMerging": true
         }
     },
     "Trickster": {
@@ -87,12 +89,6 @@
                     "RagePowerFeatQualifications": true
                 }
             },
-            "Steelblood": {
-                "DisableAll": false,
-                "Enabled": {
-                    "ArmoredSwiftness": true
-                }
-            },
             "ReformedFiend": {
                 "DisableAll": false,
                 "Enabled": {
@@ -140,13 +136,30 @@
             }
         }
     },
+    "Magus": {
+        "DisableAll": false,
+        "Base": {
+            "DisableAll": false,
+            "Enabled": {
+                "SpellCombatAbilityVariants": true
+            }
+        },
+        "Archetypes": {}
+    },
     "Monk": {
         "DisableAll": false,
         "Base": {
             "DisableAll": false,
             "Enabled": {}
         },
-        "Archetypes": {}
+        "Archetypes": {
+            "ZenArcher": {
+                "DisableAll": false,
+                "Enabled": {
+                    "PerfectStrike": true
+                }
+            }
+        }
     },
     "Kineticist": {
         "DisableAll": false,
@@ -198,12 +211,6 @@
                     "SneakAttackProgression": true,
                     "RogueTalentProgression": true
                 }
-            },
-            "Rowdy": {
-                "DisableAll": false,
-                "Enabled": {
-                    "VitalForce": true
-                }
             }
         }
     },
@@ -239,6 +246,15 @@
             "PentamicFaith": true
         }
     },
+    "Loremaster": {
+        "DisableAll": false,
+        "Enabled": {
+            "Prerequisites": true,
+            "SpellProgression": true,
+            "SpellSecrets": true,
+            "TricksterTricks": true
+        }
+    },
     "Spells": {
         "DisableAll": false,
         "Enabled": {
@@ -266,9 +282,11 @@
         "DisableAll": false,
         "Enabled": {
             "CraneWing": true,
+			"DeadEye": false,
+			"DemonicToughness": true,
             "Endurance": true,
             "FencingGrace": true,
-            "ImpToughness": true,
+			"ImpToughness": true,
             "IndomitableMount": true,
             "MountedCombat": true,
             "PersistantMetamagic": true,

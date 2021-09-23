@@ -7,6 +7,9 @@ using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
+using Kingmaker.RuleSystem;
+using Kingmaker.RuleSystem.Rules;
+using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
@@ -14,6 +17,8 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.Utility;
+using System;
 using System.Linq;
 using TabletopTweaks.Config;
 using TabletopTweaks.Extensions;
@@ -29,7 +34,6 @@ namespace TabletopTweaks.Bugfixes.Features {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                if (ModSettings.Fixes.Feats.DisableAll) { return; }
 
                 Main.LogHeader("Patching Feats");
                 PatchCraneWing();
@@ -44,7 +48,7 @@ namespace TabletopTweaks.Bugfixes.Features {
             }
 
             static void PatchCraneWing() {
-                if (!ModSettings.Fixes.Feats.Enabled["CraneWing"]) { return; }
+                if (ModSettings.Fixes.Feats.IsDisabled("CraneWing")) { return; }
 
                 BlueprintBuff CraneStyleBuff = Resources.GetBlueprint<BlueprintBuff>("e8ea7bd10136195478d8a5fc5a44c7da");
                 var FightingDefensivlyTrigger = CraneStyleBuff.GetComponent<AddInitiatorAttackWithWeaponTrigger>();
@@ -56,21 +60,21 @@ namespace TabletopTweaks.Bugfixes.Features {
                 Main.LogPatch("Patched", CraneStyleBuff);
             }
             static void PatchFencingGrace() {
-                if (!ModSettings.Fixes.Feats.Enabled["FencingGrace"]) { return; }
+                if (ModSettings.Fixes.Feats.IsDisabled("FencingGrace")) { return; }
 
                 var FencingGrace = Resources.GetBlueprint<BlueprintParametrizedFeature>("47b352ea0f73c354aba777945760b441");
                 FencingGrace.ReplaceComponents<DamageGrace>(Helpers.Create<DamageGraceEnforced>());
                 Main.LogPatch("Patched", FencingGrace);
             }
             static void PatchSlashingGrace() {
-                if (!ModSettings.Fixes.Feats.Enabled["SlashingGrace"]) { return; }
+                if (ModSettings.Fixes.Feats.IsDisabled("SlashingGrace")) { return; }
 
                 var SlashingGrace = Resources.GetBlueprint<BlueprintParametrizedFeature>("697d64669eb2c0543abb9c9b07998a38");
                 SlashingGrace.ReplaceComponents<DamageGrace>(Helpers.Create<DamageGraceEnforced>());
                 Main.LogPatch("Patched", SlashingGrace);
             }
             static void PatchEndurance() {
-                if (!ModSettings.Fixes.Feats.Enabled["Endurance"]) { return; }
+                if (ModSettings.Fixes.Feats.IsDisabled("Endurance")) { return; }
                 var Endurance = Resources.GetBlueprint<BlueprintFeature>("54ee847996c25cd4ba8773d7b8555174");
                 Endurance.SetDescription("Harsh conditions or long exertions do not easily tire you.\nBenefit: You gain +4 bonus on Fortitude " +
                     "{g|Encyclopedia:Saving_Throw}saves{/g} against fatigue and exhaustion and +2 " +
@@ -109,7 +113,7 @@ namespace TabletopTweaks.Bugfixes.Features {
                 Main.LogPatch("Patched", Endurance);
             }
             static void PatchMountedCombat() {
-                if (!ModSettings.Fixes.Feats.Enabled["MountedCombat"]) { return; }
+                if (ModSettings.Fixes.Feats.IsDisabled("MountedCombat")) { return; }
 
                 var MountedCombat = Resources.GetBlueprint<BlueprintFeature>("f308a03bea0d69843a8ed0af003d47a9");
                 var MountedCombatCooldownBuff = Resources.GetBlueprint<BlueprintBuff>("5c9ef8224acdbab4fbaf59c710d0ef23");
@@ -119,7 +123,7 @@ namespace TabletopTweaks.Bugfixes.Features {
                 Main.LogPatch("Patched", MountedCombat);
             }
             static void PatchIndomitableMount() {
-                if (!ModSettings.Fixes.Feats.Enabled["IndomitableMount"]) { return; }
+                if (ModSettings.Fixes.Feats.IsDisabled("IndomitableMount")) { return; }
 
                 var IndomitableMount = Resources.GetBlueprint<BlueprintFeature>("68e814f1f3ce55942a52c1dd536eaa5b");
                 var IndomitableMountCooldownBuff = Resources.GetBlueprint<BlueprintBuff>("34762bab68ec86c45a15884b9a9929fc");
@@ -129,7 +133,7 @@ namespace TabletopTweaks.Bugfixes.Features {
                 Main.LogPatch("Patched", IndomitableMount);
             }
             static void PatchPersistantMetamagic() {
-                if (!ModSettings.Fixes.Feats.Enabled["PersistantMetamagic"]) { return; }
+                if (ModSettings.Fixes.Feats.IsDisabled("PersistantMetamagic")) { return; }
 
                 var PersistentSpellFeat = Resources.GetBlueprint<BlueprintFeature>("cd26b9fa3f734461a0fcedc81cafaaac");
                 var spells = SpellTools.SpellList.AllSpellLists
@@ -152,7 +156,7 @@ namespace TabletopTweaks.Bugfixes.Features {
                 }
             }
             static void PatchSpiritedCharge() {
-                if (!ModSettings.Fixes.Feats.Enabled["SpiritedCharge"]) { return; }
+                if (ModSettings.Fixes.Feats.IsDisabled("SpiritedCharge")) { return; }
 
                 var ChargeBuff = Resources.GetBlueprint<BlueprintBuff>("f36da144a379d534cad8e21667079066");
                 var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
@@ -175,7 +179,7 @@ namespace TabletopTweaks.Bugfixes.Features {
                 Main.LogPatch("Patched", SpiritedChargeBuff);
             }
             static void PatchWeaponFinesse() {
-                if (!ModSettings.Fixes.Feats.Enabled["WeaponFinesse"]) { return; }
+                if (ModSettings.Fixes.Feats.IsDisabled("WeaponFinesse")) { return; }
 
                 var WeaponFinesse = Resources.GetBlueprint<BlueprintFeature>("90e54424d682d104ab36436bd527af09");
 
@@ -184,6 +188,37 @@ namespace TabletopTweaks.Bugfixes.Features {
                     c.SubCategory = WeaponSubCategory.Finessable;
                 }));
                 Main.LogPatch("Patched", WeaponFinesse);
+            }
+        }
+
+        [HarmonyPatch(typeof(AbilityCustomVitalStrike.VitalStrike), "OnEventDidTrigger", new Type[] { typeof(RuleCalculateWeaponStats) })]
+        static class VitalStrike_OnEventDidTrigger_Rowdy_Patch {
+
+            static bool Prefix(AbilityCustomMeleeAttack.VitalStrike __instance, RuleCalculateWeaponStats evt) {
+                if (ModSettings.Fixes.Feats.IsDisabled("VitalStrike")) { return true; }
+
+                DamageDescription damageDescription = evt.DamageDescription.FirstItem();
+                if (damageDescription != null && damageDescription.TypeDescription.Type == DamageType.Physical) {
+                    var vitalDamage = new DamageDescription() {
+                        Dice = new DiceFormula(damageDescription.Dice.Rolls * Math.Max(1, __instance.m_DamageMod - 1), damageDescription.Dice.Dice),
+                        Bonus = __instance.m_Mythic ? damageDescription.Bonus * Math.Max(1, __instance.m_DamageMod - 1) : 0,
+                        TypeDescription = damageDescription.TypeDescription,
+                        IgnoreReduction = damageDescription.IgnoreReduction,
+                        IgnoreImmunities = damageDescription.IgnoreImmunities,
+                        SourceFact = damageDescription.SourceFact,
+                        CausedByCheckFail = damageDescription.CausedByCheckFail,
+                        m_BonusWithSource = 0
+                    };
+                    evt.DamageDescription.Insert(1, vitalDamage);
+                    if (__instance.m_Rowdy && evt.Initiator.Descriptor.Stats.SneakAttack.ModifiedValue > 0) {
+                        DamageDescription damageDescription2 = new DamageDescription {
+                            TypeDescription = evt.DamageDescription.FirstItem().TypeDescription,
+                            Dice = new DiceFormula(evt.Initiator.Descriptor.Stats.SneakAttack * 2, DiceType.D6),
+                        };
+                        evt.DamageDescription.Add(damageDescription2);
+                    }
+                }
+                return false;
             }
         }
     }

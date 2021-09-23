@@ -28,7 +28,6 @@ namespace TabletopTweaks.Bugfixes.Features {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                if (ModSettings.Fixes.MythicAbilities.DisableAll) { return; }
                 Main.LogHeader("Patching Mythic Abilities");
                 PatchBloodlineAscendance();
                 PatchSecondBloodline();
@@ -36,7 +35,7 @@ namespace TabletopTweaks.Bugfixes.Features {
                 PatchMythicCharge();
             }
             static void PatchBloodlineAscendance() {
-                if (!ModSettings.Fixes.MythicAbilities.Enabled["BloodlineAscendance"]) { return; }
+                if (ModSettings.Fixes.MythicAbilities.IsDisabled("BloodlineAscendance")) { return; }
                 var BloodlineAscendance = Resources.GetBlueprint<BlueprintFeatureSelection>("ce85aee1726900641ab53ede61ac5c19");
                 var SeekerBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("7bda7cdb0ccda664c9eb8978cf512dbc");
 
@@ -51,6 +50,7 @@ namespace TabletopTweaks.Bugfixes.Features {
                         capstone.AddPrerequisiteFeature(bloodline, Prerequisite.GroupType.Any);
                     }
                 });
+                BloodlineAscendance.RemoveComponents<PrerequisiteFeature>();
                 BloodlineAscendance.AddPrerequisite(Helpers.Create<PrerequisiteFeaturesFromList>(c => {
                     c.m_Features = new BlueprintFeatureReference[] {
                         Resources.GetBlueprint<BlueprintFeature>("24bef8d1bee12274686f6da6ccbc8914").ToReference<BlueprintFeatureReference>(),    // SorcererBloodlineSelection
@@ -59,14 +59,15 @@ namespace TabletopTweaks.Bugfixes.Features {
                         Resources.GetBlueprint<BlueprintFeature>("7d990675841a7354c957689a6707c6c2").ToReference<BlueprintFeatureReference>(),    // SageBloodlineProgression
                         Resources.GetBlueprint<BlueprintFeature>("8a95d80a3162d274896d50c2f18bb6b1").ToReference<BlueprintFeatureReference>(),    // EmpyrealBloodlineProgression
                         Resources.GetBlueprint<BlueprintFeature>("da48f9d7f697ae44ca891bfc50727988").ToReference<BlueprintFeatureReference>(),    // BloodOfDragonsSelection - Dragon Disciple
-                        Resources.GetBlueprint<BlueprintFeature>("7c813fb495d74246918a690ba86f9c86").ToReference<BlueprintFeatureReference>()     // NineTailedHeirBloodlineSelection
+                        Resources.GetBlueprint<BlueprintFeature>("7c813fb495d74246918a690ba86f9c86").ToReference<BlueprintFeatureReference>(),    // NineTailedHeirBloodlineSelection
+                        Resources.GetBlueprint<BlueprintFeature>("94c29f69cdc34594a6a4677441ed7375").ToReference<BlueprintFeatureReference>()     // EldritchScionBloodlineSelection
                     };
                     c.Amount = 1;
                 }));
                 Main.LogPatch("Patched", BloodlineAscendance);
             }
             static void PatchSecondBloodline() {
-                if (!ModSettings.Fixes.MythicAbilities.Enabled["SecondBloodline"]) { return; }
+                if (ModSettings.Fixes.MythicAbilities.IsDisabled("SecondBloodline")) { return; }
                 BlueprintFeatureSelection SecondBloodline = Resources.GetBlueprint<BlueprintFeatureSelection>("3cf2ab2c320b73347a7c21cf0d0995bd");
 
                 SecondBloodline.RemoveComponents<PrerequisiteFeature>();
@@ -78,14 +79,15 @@ namespace TabletopTweaks.Bugfixes.Features {
                         Resources.GetBlueprint<BlueprintFeature>("7d990675841a7354c957689a6707c6c2").ToReference<BlueprintFeatureReference>(),    // SageBloodlineProgression
                         Resources.GetBlueprint<BlueprintFeature>("8a95d80a3162d274896d50c2f18bb6b1").ToReference<BlueprintFeatureReference>(),    // EmpyrealBloodlineProgression
                         Resources.GetBlueprint<BlueprintFeature>("da48f9d7f697ae44ca891bfc50727988").ToReference<BlueprintFeatureReference>(),    // BloodOfDragonsSelection - Dragon Disciple
-                        Resources.GetBlueprint<BlueprintFeature>("7c813fb495d74246918a690ba86f9c86").ToReference<BlueprintFeatureReference>()     // NineTailedHeirBloodlineSelection
-                    };
+                        Resources.GetBlueprint<BlueprintFeature>("7c813fb495d74246918a690ba86f9c86").ToReference<BlueprintFeatureReference>(),    // NineTailedHeirBloodlineSelection
+                        Resources.GetBlueprint<BlueprintFeature>("94c29f69cdc34594a6a4677441ed7375").ToReference<BlueprintFeatureReference>()     // EldritchScionBloodlineSelection
+                };
                     c.Amount = 1;
                 }));
                 Main.LogPatch("Patched", SecondBloodline);
             }
             static void PatchBloodragerSecondBloodline() {
-                if (!ModSettings.Fixes.MythicAbilities.Enabled["SecondBloodragerBloodline"]) { return; }
+                if (ModSettings.Fixes.MythicAbilities.IsDisabled("SecondBloodragerBloodline")) { return; }
                 var ReformedFiendBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("dd62cb5011f64cd38b8b08abb19ba2cc");
                 var BloodragerBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("62b33ac8ceb18dd47ad4c8f06849bc01");
                 var SecondBloodragerBloodline = Resources.GetBlueprint<BlueprintFeatureSelection>("b7f62628915bdb14d8888c25da3fac56");
@@ -130,7 +132,7 @@ namespace TabletopTweaks.Bugfixes.Features {
             private static readonly BlueprintFeature EnduringSpellsGreater = Resources.GetBlueprint<BlueprintFeature>("13f9269b3b48ae94c896f0371ce5e23c");
 
             static bool Prefix(MechanicsContext parentContext, ref Rounds? duration, BlueprintItemEnchantment blueprint) {
-                if (ModSettings.Fixes.MythicAbilities.DisableAll || !ModSettings.Fixes.MythicAbilities.Enabled["EnduringSpells"]) { return true; }
+                if (ModSettings.Fixes.MythicAbilities.IsDisabled("EnduringSpells")) { return true; }
                 if (parentContext != null && parentContext.MaybeOwner != null && duration != null) {
 
                     var owner = parentContext.MaybeOwner;

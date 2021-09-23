@@ -33,8 +33,20 @@
         "DisableAll": false,
         "Enabled": {
             "DervishDance": true,
+			"DeadEye": false,
+			"DemonicToughness": true,
+            "ExtraArcanistExploit": true,
+            "ExtraArcana": true,
+            "ExtraDiscovery": true,
+            "ExtraHex": true,
+            "ExtraKi": true,
+            "ExtraMercy": true,
+            "ExtraReservoir": true,
+            "ExtraRogueTalent": true,
+            "ExtraSlayerTalent": true,
+            "ExtraRevelation": true,
             "GracefulAthlete": true,
-            "ImpToughness": true,
+			"ImpToughness": true,
             "MagicalAptitude": true,
             "Scholar": true,
             "Self-Sufficent": true,
@@ -45,6 +57,8 @@
     "FighterAdvancedWeaponTraining": {
         "DisableAll": false,
         "Enabled": {
+            "DefensiveWeaponTraining": true,
+            "FocusedWeapon": true,
             "TrainedGrace": true,
             "TrainedThrow": true
         }
@@ -58,6 +72,13 @@
             "ArmorSpecialization": true,
             "CriticalDeflection": true,
             "SteelHeadbutt": true
+        }
+    },
+    "MagusArcana": {
+        "DisableAll": false,
+        "Enabled": {
+            "SpellBlending": true,
+            "BroadStudy": true
         }
     },
     "Races": {
@@ -84,7 +105,8 @@
             "ImpossibleSpeed": true,
             "ArmorMaster": true,
             "ArmoredMight": true,
-            "MountedManiac": true
+            "MountedManiac": true,
+            "MythicSpellCombat": true
         }
     }
 }

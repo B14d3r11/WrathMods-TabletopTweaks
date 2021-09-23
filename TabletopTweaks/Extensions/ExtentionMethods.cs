@@ -5,14 +5,12 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Facts;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.ElementsSystem;
 using Kingmaker.Localization;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
@@ -151,8 +149,12 @@ namespace TabletopTweaks.Extensions {
                 if (selection.m_AllFeatures.Contains(featureReference)) {
                     selection.m_AllFeatures = selection.m_AllFeatures.Where(f => !f.Equals(featureReference)).ToArray();
                 }
+                if (selection.m_Features.Contains(featureReference)) {
+                    selection.m_Features = selection.m_Features.Where(f => !f.Equals(featureReference)).ToArray();
+                }
             }
             selection.m_AllFeatures = selection.m_AllFeatures.OrderBy(feature => feature.Get().Name).ToArray();
+            selection.m_Features = selection.m_Features.OrderBy(feature => feature.Get().Name).ToArray();
         }
 
         public static void AddFeatures(this BlueprintFeatureSelection selection, params BlueprintFeature[] features) {
@@ -161,8 +163,12 @@ namespace TabletopTweaks.Extensions {
                 if (!selection.m_AllFeatures.Contains(featureReference)) {
                     selection.m_AllFeatures = selection.m_AllFeatures.AppendToArray(featureReference);
                 }
+                if (!selection.m_Features.Contains(featureReference)) {
+                    selection.m_Features = selection.m_Features.AppendToArray(featureReference);
+                }
             }
             selection.m_AllFeatures = selection.m_AllFeatures.OrderBy(feature => feature.Get().Name).ToArray();
+            selection.m_Features = selection.m_Features.OrderBy(feature => feature.Get().Name).ToArray();
         }
         public static void AddPrerequisiteFeature(this BlueprintFeature obj, BlueprintFeature feature) {
             obj.AddPrerequisiteFeature(feature, GroupType.All);
@@ -194,6 +200,10 @@ namespace TabletopTweaks.Extensions {
             });
         }
 
+        public static void AddPrerequisite<T>(this BlueprintFeature obj, Action<T> init = null) where T : Prerequisite, new() {
+            obj.AddPrerequisite(Helpers.Create(init));
+        }
+
         public static void AddPrerequisite<T>(this BlueprintFeature obj, T prerequisite) where T : Prerequisite {
             obj.AddComponent(prerequisite);
             switch (prerequisite) {
@@ -215,6 +225,12 @@ namespace TabletopTweaks.Extensions {
                     break;
                 default:
                     break;
+            }
+        }
+
+        public static void AddPrerequisites<T>(this BlueprintFeature obj, params T[] prerequisites) where T : Prerequisite {
+            foreach (var prerequisite in prerequisites) {
+                obj.AddPrerequisite(prerequisite);
             }
         }
 

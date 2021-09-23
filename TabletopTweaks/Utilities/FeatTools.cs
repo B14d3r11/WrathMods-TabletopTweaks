@@ -1,4 +1,5 @@
-﻿using Kingmaker.Blueprints.Classes;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
@@ -8,6 +9,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
 using System;
+using System.Linq;
 using TabletopTweaks.Extensions;
 
 namespace TabletopTweaks.Utilities {
@@ -20,6 +22,7 @@ namespace TabletopTweaks.Utilities {
         public static void AddAsFeat(BlueprintFeature feature) {
             var BasicFeatSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("247a4068296e8be42890143f451b4b45");
             var ExtraFeatMythicFeat = Resources.GetBlueprint<BlueprintFeatureSelection>("e10c4f18a6c8b4342afe6954bde0587b");
+
             BasicFeatSelection.AddFeatures(feature);
             ExtraFeatMythicFeat.AddFeatures(feature);
         }
@@ -43,6 +46,21 @@ namespace TabletopTweaks.Utilities {
                 Resources.GetBlueprint<BlueprintFeatureSelection>("b8bf3d5023f2d8c428fdf6438cecaea7"), //ArcanistExploitSelection
             };
             TalentSelections.ForEach(selection => selection.AddFeatures(feature));
+        }
+        public static void AddAsMagusArcana(BlueprintFeature feature, params BlueprintFeatureSelection[] ignore) {
+            var ArcanaSelections = new BlueprintFeatureSelection[] {
+                Resources.GetBlueprint<BlueprintFeatureSelection>("e9dc4dfc73eaaf94aae27e0ed6cc9ada"), //MagusArcanaSelection
+                Resources.GetBlueprint<BlueprintFeatureSelection>("ad6b9cecb5286d841a66e23cea3ef7bf"), //HexcrafterMagusHexArcanaSelection
+                Resources.GetBlueprint<BlueprintFeatureSelection>("d4b54d9db4932454ab2899f931c2042c")  //EldritchMagusArcanaSelection;
+            };
+            ArcanaSelections.Where(selection => !ignore?.Contains(selection) ?? true).ForEach(selection => selection.AddFeatures(feature));
+        }
+        public static void AddAsMythicAbility(BlueprintFeature feature) {
+            var MythicAbilitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("ba0e5a900b775be4a99702f1ed08914d");
+            var ExtraMythicAbilityMythicFeat = Resources.GetBlueprint<BlueprintFeatureSelection>("8a6a511c55e67d04db328cc49aaad2b8");
+
+            MythicAbilitySelection.AddFeatures(feature);
+            ExtraMythicAbilityMythicFeat.AddFeatures(feature);
         }
         public static BlueprintFeature CreateSkillFeat(string name, StatType skill1, StatType skill2, Action<BlueprintFeature> init = null) {
             var SkillFeat = Helpers.CreateBlueprint<BlueprintFeature>(name, bp => {
@@ -112,6 +130,42 @@ namespace TabletopTweaks.Utilities {
             });
             init?.Invoke(SkillFeat);
             return SkillFeat;
+        }
+
+        public static BlueprintFeature CreateExtraResourceFeat(string name, BlueprintAbilityResource resource, int amount, Action<BlueprintFeature> init = null) {
+            var extraResourceFeat = Helpers.CreateBlueprint<BlueprintFeature>(name, bp => {
+                bp.Ranks = 10;
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };
+                bp.AddComponent<IncreaseResourceAmount>(c => {
+                    c.m_Resource = resource.ToReference<BlueprintAbilityResourceReference>();
+                    c.Value = amount;
+                });
+                bp.AddComponent<FeatureTagsComponent>(c => {
+                    c.FeatureTags = FeatureTag.ClassSpecific;
+                });
+            });
+            init?.Invoke(extraResourceFeat);
+            return extraResourceFeat;
+        }
+
+        public static BlueprintFeatureSelection CreateExtraSelectionFeat(string name, BlueprintFeatureSelection selection, Action<BlueprintFeatureSelection> init = null) {
+            var extraResourceFeat = Helpers.CreateBlueprint<BlueprintFeatureSelection>(name, bp => {
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };
+                bp.m_Features = selection.m_Features.ToArray();
+                bp.m_AllFeatures = selection.m_AllFeatures.ToArray();
+                bp.Mode = selection.Mode;
+                bp.IgnorePrerequisites = selection.IgnorePrerequisites;
+                bp.AddComponent<FeatureTagsComponent>(c => {
+                    c.FeatureTags = FeatureTag.ClassSpecific;
+                });
+                bp.AddPrerequisiteFeature(selection);
+            });
+            init?.Invoke(extraResourceFeat);
+            return extraResourceFeat;
         }
     }
 }

@@ -1,17 +1,13 @@
-using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Facts;
-using Kingmaker.Designers.Mechanics.Recommendations;
 using Kingmaker.EntitySystem.Stats;
-using Kingmaker.Enums;
 using TabletopTweaks.Config;
 using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
 using TabletopTweaks.Utilities;
 
-namespace TabletopTweaks.NewContent.Feats {
+namespace TabletopTweaks.NewContent.Feats
+{
     static class ImpToughness {
         public static void AddImpToughness() {
             var Toughness = Resources.GetBlueprint<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
@@ -21,6 +17,7 @@ namespace TabletopTweaks.NewContent.Feats {
                 bp.ReapplyOnLevelUp = false;
                 bp.IsClassFeature = true;
 				bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };
+//Stat Requirement
 				bp.AddComponent(Helpers.Create<PrerequisiteStatValue>(c => {
                     c.Stat = StatType.Constitution;
                     c.Value = 14;

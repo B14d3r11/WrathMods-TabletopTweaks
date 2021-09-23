@@ -33,6 +33,8 @@ All fixes and added content are configurable and can be disabled by editing the 
         Impossible Speed
         Armor Master
         Armored Might
+        Mounted Maniac
+        Mythic Spell Combat
     
     Adds the following arcanist exploits:
         Quick Study
@@ -40,9 +42,22 @@ All fixes and added content are configurable and can be disabled by editing the 
         Metamagic Knowledge
         Item Crafting
     
+    Adds the following magus arcana:
+        Broad Study
+        Spell Blending
+
     Adds the following advanced weapon trainings:
         Trained Grace
         Trained Throw
+        Defensive Weapon Training
+        Focused Weapon
+
+    Adds the following advanced armor trainings:
+        Armored Confidence
+        Armored Juggernaut
+        Armor Specialization
+        Critical Deflection
+        Steel Headbut
         
     Adds the following archetypes:
         Metamagic Rager
@@ -55,6 +70,16 @@ All fixes and added content are configurable and can be disabled by editing the 
         Self-Sufficent
         Shingle Runner
         Street Smarts
+        Extra Reservoir
+        Extra Ki
+        Extra Hex
+        Extra Arcanist Exploit
+        Extra Arcana
+        Extra Rogue Talent
+        Extra Slayer Talent
+        Extra Revelation
+        Extra Discovery
+        Extra Mercy
 
     Adds the following rogue talents:
         Graceful Athlete
@@ -92,6 +117,7 @@ All fixes and added content are configurable and can be disabled by editing the 
         Vital Strike no longer crits incorrectly
         Empower and Maximize no longer stack incorrectly
         Skills points properly increase from permanant bonuses
+        Selective now only works on instaneous effects
     
     Aeon
         Allows bane uses to scale will all classes instead of just Inquisitor
@@ -102,18 +128,12 @@ All fixes and added content are configurable and can be disabled by editing the 
         Enables azata songs to be started outside of combat
     Arcansit
         Fixed consume spells minimum resources
-        Fixed arcane reservior refill amount
-    Barbarian
-        Instinctual Warrior
-            Fixed AC bonus applying even when wearing armor
     Bloodrager
         Fixes abyssal bulk blood rage feature
         Fixes spells per day to prevent premature qualification of prerequisites
         Fixed limitless rage not granting extra temp hp
         Primalist
             Prevents qualification of Extra Rage power feat
-        Steel blood
-            Fixes Armored Swiftness
         Reformed Fiend
             Fixes Hatred Against Evil
     Cavalier
@@ -122,7 +142,13 @@ All fixes and added content are configurable and can be disabled by editing the 
         Fixes supreme charge
         Gendarme
             Fixes transfixing charge
-
+    Dragon Disciple
+        Spellbooks now work:
+            Stigmitized Witch
+            Sage Sorcerer
+            Empyreal Sorcerer
+            Unlettered Arcansist
+            Bature Mage
     Fighter
         Advanced Weapon Training Feat now properly repects prerequisites
         Two Handed Weapon Training now works with all Weapon Training effects
@@ -133,8 +159,18 @@ All fixes and added content are configurable and can be disabled by editing the 
     Kineticist
         Elemental Engine
             Fixes bug preventing this from being selectable
-    Paladin
-        Fixes divine mount selection
+    Lich
+        Enabled merging for exploiter wizard and nature mage
+    Loremaster
+        Spell Secrets now work
+        Prerequisites have been fixed
+        Trickster feats removed from selection
+        No longer causes you to lose a caster level
+    Magus
+        Spell combat now works with abilities that have variants
+    Monk
+        Zen Archer
+            Perfect Strike now upgrades at level 10
     Ranger
         Reverts favorable enemy outsider to work on all outsiders
         Espionage Expert
@@ -145,8 +181,6 @@ All fixes and added content are configurable and can be disabled by editing the 
         Slippery mind now properly updates on stat change
         Eldritch Scoundrel
             Fixes sneak attack progression
-        Rowdy
-            Fixes vital force
     Slayer
         Fixes studied target bonus
         Trapfinding now addes 1/2 class level to trickery as well as perception
