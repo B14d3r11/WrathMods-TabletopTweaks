@@ -33,7 +33,7 @@
         "DisableAll": false,
         "Enabled": {
             "DervishDance": true,
-			"DeadEye": false,
+			"DeadEye": true,
 			"DemonicToughness": true,
             "ExtraArcanistExploit": true,
             "ExtraArcana": true,

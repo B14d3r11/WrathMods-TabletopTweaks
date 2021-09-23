@@ -282,7 +282,7 @@
         "DisableAll": false,
         "Enabled": {
             "CraneWing": true,
-			"DeadEye": false,
+			"DeadEye": true,
 			"DemonicToughness": true,
             "Endurance": true,
             "FencingGrace": true,
