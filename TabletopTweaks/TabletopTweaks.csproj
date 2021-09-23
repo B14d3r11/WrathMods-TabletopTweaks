@@ -179,6 +179,7 @@
     <Compile Include="NewComponents\BroadStudyComponent.cs" />
     <Compile Include="NewComponents\BroadStudyMythicComponent.cs" />
     <Compile Include="NewComponents\BuffExtraEffectsRequirements.cs" />
+    <Compile Include="NewComponents\ContextDistanceDamageBonus.cs" />
     <Compile Include="NewComponents\ContextRestoreResourcesFixed.cs" />
     <Compile Include="NewComponents\DamageGraceEnforced.cs" />
     <Compile Include="NewComponents\DefensiveWeaponTrainingComponent.cs" />
@@ -243,6 +244,11 @@
     <Compile Include="NewContent\Bloodlines\DestinedBloodline.cs" />
     <Compile Include="NewContent\ContentAdder.cs" />
     <Compile Include="NewContent\ArcanistExploits\QuickStudy.cs" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="NewContent\Feats\DeadEye.cs" />
+    <Compile Include="NewContent\Feats\DemonicToughness.cs" />
+>>>>>>> Stashed changes
     <Compile Include="NewContent\Feats\DervishDance.cs" />
     <Compile Include="NewContent\Feats\ExtraArcana.cs" />
     <Compile Include="NewContent\Feats\ExtraArcanistExploit.cs" />
@@ -328,6 +334,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <EmbeddedResource Include="Config\Fixes.json" />
+    <None Include="NewComponents\RangedCat.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
