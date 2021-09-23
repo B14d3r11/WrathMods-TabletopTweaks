@@ -13,7 +13,7 @@ namespace TabletopTweaks.NewContent.Feats
             var Toughness = Resources.GetBlueprint<BlueprintFeature>("d09b20029e9abfe4480b356c92095623");
             var ImpToughness = Helpers.CreateBlueprint<BlueprintFeature>("ImpToughness", (System.Action<BlueprintFeature>)(bp => {
                 bp.SetName("Improved Toughness");
-                bp.SetDescription("You gain +6 {g|Encyclopedia:HP}hit points{/g}" + "For every {g|Encyclopedia:Hit_Dice}Hit Die{/g} you possess beyond 3, you gain an additional +2 hit points." + "If you have more than 3 Hit Dice, you gain +2 hit points whenever you gain a Hit Die (such as when you gain a level).");
+                bp.SetDescription("You gain +6 {g|Encyclopedia:HP}hit points{/g} " + "For every {g|Encyclopedia:Hit_Dice}Hit Die{/g} you possess beyond 3, you gain an additional +2 hit points. " + "If you have more than 3 Hit Dice, you gain +2 hit points whenever you gain a Hit Die (such as when you gain a level).");
                 bp.ReapplyOnLevelUp = false;
                 bp.IsClassFeature = true;
 				bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };

@@ -24,8 +24,9 @@ namespace TabletopTweaks.NewContent.Feats
             var DeadEye = Helpers.CreateBlueprint<BlueprintFeature>("DeadEye", (System.Action<BlueprintFeature>)(bp =>
             {
                 bp.SetName("Dead Eye");
-                bp.SetDescription("Your precision with ranged weapons translates into more telling strikes than you would normally make. " +
-                    "SPECIAL: Dead Eye does not increase the damage dealt to creatures immune to critical hits.");
+                bp.SetDescription("Your precision with ranged weapons translates into more telling strikes than you would normally make.\n"
+                                  + "<b>Benefit:</b> You may add your Dexterity bonus on damage rolls made with ranged weapons for which you have the Weapon Focus feat, so long as the target is within 30 feet. \n"
+                                  + "<b>SPECIAL:</b> Dead Eye does not increase the damage dealt to creatures immune to critical hits.");
                 bp.Ranks = 1;
                 bp.ReapplyOnLevelUp = true;
                 bp.IsClassFeature = true;
@@ -58,7 +59,8 @@ namespace TabletopTweaks.NewContent.Feats
                 }));
                 //Feat Prerequisits
                 bp.AddPrerequisiteFeature(PointBlankShot);
-                bp.AddComponent(Helpers.Create<PrerequisiteParametrizedWeaponSubcategory>(c => {
+                bp.AddComponent(Helpers.Create<PrerequisiteParametrizedWeaponSubcategory>(c => 
+                {
                     c.SubCategory = WeaponSubCategory.Ranged;
                     c.m_Feature = WeaponFocus.ToReference<BlueprintFeatureReference>();
                 }));

@@ -16,7 +16,7 @@ namespace TabletopTweaks.NewContent.Feats
             var ImpToughness = Resources.GetBlueprint<BlueprintFeature>("79570409-6492-4e4c-ac42-58876a51400a");
             var DemonicToughness = Helpers.CreateBlueprint<BlueprintFeature>("DemonicToughness", (System.Action<BlueprintFeature>)(bp => {
                 bp.SetName("Demonic Toughness");
-                bp.SetDescription("Your body has taken on the hardiness of a Demon." + "You gain +9 {g|Encyclopedia:HP}hit points{/g}" + "For every {g|Encyclopedia:Hit_Dice}Hit Die{/g} you possess beyond 3, you gain an additional +3 hit points." + "If you have more than 3 Hit Dice, you gain +3 hit points whenever you gain a Hit Die (such as when you gain a level).");
+                bp.SetDescription("Your body has taken on the hardiness of a Demon. " + "You gain +9 {g|Encyclopedia:HP}hit points{/g} " + "For every {g|Encyclopedia:Hit_Dice}Hit Die{/g} you possess beyond 3, you gain an additional +3 hit points. " + "If you have more than 3 Hit Dice, you gain +3 hit points whenever you gain a Hit Die (such as when you gain a level).");
                 bp.ReapplyOnLevelUp = false;
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };
