@@ -1,8 +1,10 @@
 {
+    "NewSettingsOffByDefault": false,
     "BaseAbilities": {
         "DisableAll": false,
         "Enabled": {
-            "OneHandedToggle": true
+            "OneHandedToggle": true,
+            "DummyToggle": true
         }
     },
     "Bloodlines": {
@@ -32,21 +34,21 @@
     "Feats": {
         "DisableAll": false,
         "Enabled": {
+            "DeadEye": true,
+            "DemonicToughness": true,
             "DervishDance": true,
-			"DeadEye": true,
-			"DemonicToughness": true,
-            "ExtraArcanistExploit": true,
             "ExtraArcana": true,
+            "ExtraArcanistExploit": true,
             "ExtraDiscovery": true,
             "ExtraHex": true,
             "ExtraKi": true,
             "ExtraMercy": true,
             "ExtraReservoir": true,
+            "ExtraRevelation": true,
             "ExtraRogueTalent": true,
             "ExtraSlayerTalent": true,
-            "ExtraRevelation": true,
             "GracefulAthlete": true,
-			"ImpToughness": true,
+            "ImpToughness": true,
             "MagicalAptitude": true,
             "Scholar": true,
             "Self-Sufficent": true,

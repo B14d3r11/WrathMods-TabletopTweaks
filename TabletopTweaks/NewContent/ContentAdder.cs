@@ -80,8 +80,10 @@ namespace TabletopTweaks.NewContent {
                 Feats.StreetSmarts.AddStreetSmarts();
                 Feats.GracefulAthlete.AddGracefulAthlete();
                 Feats.DervishDance.AddDervishDance();
-				Feats.ImpToughness.AddImpToughness();
-				Feats.DemonicToughness.AddDemonicToughness();
+                Feats.ImpToughness.AddImpToughness();
+                Feats.DemonicToughness.AddDemonicToughness();
+                Feats.DeadEye.AddDeadEye();
+
                 Feats.ExtraReservoir.AddExtraReservoir();
                 Feats.ExtraHex.AddExtraHex();
                 Feats.ExtraArcanistExploit.AddExtraArcanistExploit();
@@ -92,7 +94,6 @@ namespace TabletopTweaks.NewContent {
                 Feats.ExtraRevelation.AddExtraRevelation();
                 Feats.ExtraDiscovery.AddExtraDiscovery();
                 Feats.ExtraMercy.AddExtraMercy();
-                Feats.DeadEye.AddDeadEye();
 
                 AlternateCapstones.MasterfulTalent.AddMasterfulTalent();
             }
